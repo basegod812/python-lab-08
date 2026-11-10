@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Lab 8 variant 2: Poetry, requests, pytest, TDD, logging, CI and Docker"
 authors = ["Шкловский Герман Вячеславович"]
 readme = "README.md"
-packages = [{ include = "calculator", from = "src" }]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = ">=3.11,<4.0"
