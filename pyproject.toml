@@ -1,22 +1,21 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
 
-[project]
+[tool.poetry]
 name = "shklovskiy-python-lab-08"
 version = "0.1.0"
-description = "Lab 8, variant 2: requests, TDD, logging, CI and Docker"
-requires-python = ">=3.11"
-dependencies = ["requests>=2.31,<3"]
+description = "Lab 8 variant 2: Poetry, requests, pytest, TDD, logging, CI and Docker"
+authors = ["Шкловский Герман Вячеславович"]
+readme = "README.md"
+packages = [{ include = "calculator", from = "src" }]
 
-[project.optional-dependencies]
-dev = ["pytest>=8,<10"]
+[tool.poetry.dependencies]
+python = ">=3.11,<4.0"
+requests = "^2.32"
 
-[tool.setuptools]
-py-modules = ["calculator"]
-
-[tool.setuptools.package-dir]
-"" = "src"
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3"
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
