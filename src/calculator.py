@@ -27,6 +27,14 @@ def divide(a: float, b: float) -> float:
     return a / b
 
 
+def modulo(a: int, b: int) -> int:
+    """Return the remainder; developed test-first in tests/test_modulo_tdd.py."""
+    if b == 0:
+        raise ZeroDivisionError("Деление на ноль запрещено")
+    logger.info("Остаток от деления %s на %s", a, b)
+    return a % b
+
+
 def fetch_status(url: str = "https://example.com") -> int:
     """Среднее №2: пример использования requests."""
     response = requests.get(url, timeout=10)
