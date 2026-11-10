@@ -6,10 +6,10 @@
 **Номер лабораторной:** 8
 
 ## Задания варианта 2
-- **Среднее №2:** зависимость `requests` объявлена в `[tool.poetry.dependencies]`; проект собирается с `poetry-core`. Установка: `poetry add requests`.
+- **Среднее №2:** зависимость `requests` объявлена в `[tool.poetry.dependencies]`; проект управляется Poetry в режиме `package-mode = false` (отдельный модуль `src/calculator.py`). Установка: `poetry add requests`.
 - **Среднее №4:** TDD для калькулятора, тесты на сложение, вычитание, умножение, деление; дополнительный проверяемый цикл RED → GREEN для `modulo`: коммит `8963924` добавил `tests/test_modulo_tdd.py` с импортом отсутствующей на тот момент функции, после чего коммит `69a125a` реализовал функцию. Это **новый** цикл TDD; изначальные четыре операции были закоммичены в неправильном порядке.
 - **Среднее №7:** `logging` для вызовов калькулятора.
-- **Повышенное №2:** GitHub Actions выполняет `poetry lock`, `poetry install --with dev` и `poetry run pytest`.
+- **Повышенное №2:** GitHub Actions выполняет `poetry lock`, `poetry install --no-root --with dev` и `poetry run pytest`.
 - **Повышенное №6:** Dockerfile и .dockerignore для приложения.
 
 ## Запуск через Poetry
@@ -18,9 +18,9 @@
 
 ```bash
 poetry lock
-poetry install --with dev
+poetry install --no-root --with dev
 poetry run pytest -q
-poetry run python -m calculator
+PYTHONPATH=src poetry run python -m calculator
 ```
 
 Зависимость requests добавляется и обновляется через `poetry add requests`; зависимости для тестов — через `poetry add --group dev pytest`.
